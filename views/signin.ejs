@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%- include('./partials/head') %>
+    <title>Sign Up</title>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+    <% if (locals.message) { %>
+      <div class="alert alert-danger w-50%" role="alert">
+        <%= message %>
+      </div>
+    <% } %>
+    <!-- <div class="container">
+    <form class="form" method="post" action="/user/signin">
+        <p class="title">Welcome Back ! </p>
+        <p class="message">Signin page </p>
+        <label>
+            <input required="" placeholder="" type="email" class="input" name="email">
+            <span>Email</span>
+        </label> 
+            
+        <label>
+            <input required="" placeholder="" type="password" class="input" name="password">
+            <span>Password</span>
+        </label>
+        <button class="submit" type="submit">Submit</button>
+        <p class="signin">Don't have an acount ? <a href="/user/signup">SignUp</a> </p>
+    </form>
+    </div> -->
+
+  <div class="container mt-3">
+    <form method="post" action="/user/signin">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required>
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <p class="mt-2">Don't have an acount ? <a href="/user/signup">SignUp</a> </p>
+    </form>
+  </div>
+
+    <%- include('./partials/script') %>
+</body>
+</html>

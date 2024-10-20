@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%- include('./partials/head') %>
+    <title>Add Blog</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    <h3 class="w-75 mx-auto p-2">Update your blog</h3>
+    <form class="w-75 mx-auto p-2" method="post" action="/blog/update/<%= blog._id %>" >
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" aria-describedby="title" name="title" value="<%= blog.title %>">
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label">Body</label>
+            <textarea class="form-control" id="body" rows="10" name="body"><%= blog.body %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    <%- include('./partials/script') %>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/head') %>
+    <style>
+        .profile-img {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+        .profile-container {
+          margin-top: 50px;
+        }
+      </style>
+    <title>Profile</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    <div class="container profile-container">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <img src="/<%= user.profileImageURL %>" alt="Profile Image" class="profile-img">
+          </div>
+          <div class="col-md-8 d-flex flex-column justify-content-center">
+            <h2><%= user.fullname %></h2>
+            <p class="mt-2"><%= user.email %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5 mx-5">
+        <h3>Profile Settings</h3>
+        <form action="/user/profile-img" method="post" enctype="multipart/form-data">
+          <label class="form-label" for="customFile">Update your Profile Photo !</label>
+          <div class="d-flex flex-row">
+            <input type="file" class="form-control w-25 align-self-baseline" id="customFile" name="profile" required/>
+            <button type="submit" class="btn btn-outline-dark mt-2 mx-1 align-self-baseline">Update Photo</button>
+          </div>
+          
+        </form>
+      </div>
+      
+      <h2 class="mt-5 mx-5">My blogs</h2>
+      <% if (blogs.length) { %>
+        <div class="text-center">
+            <div class="container mt-3 mb-5 row row-cols-4 gap-5 justify-content-center">
+                <% blogs.forEach(blog => { %>
+                    <div class="card col" style="width: 18rem;">
+                        <img src="/<%= blog.coverImage %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"> <%= blog.title %></h5>
+                          <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                          <a href="/blog/update/<%= blog._id %>" class="btn btn-warning">Update</a>
+                          <a href="/blog/delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+                          
+                        </div>
+                      </div>
+                <% }) %>
+            </div>
+      
+      <% } else { %>
+        <div class="mt-5 mx-5">
+            <h5>No Blog published !. Publish some blogs now 😉</h5>
+        </div>
+      <% } %>
+       
+      
+    </div>
+
+
+    <%- include('./partials/script') %>
+</body>
+</html>

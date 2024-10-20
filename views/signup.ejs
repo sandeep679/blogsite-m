@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%- include('./partials/head') %>
+    <title>Sign Up</title>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+    <div class="container">
+    <form class="form" method="POST" action="/user/signup" onsubmit="alert('Sign Up Succesful ! Login now 😊')">
+        <p class="form-label h3 mt-3">Register </p>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Full Name</label>
+            <input type="text" class="form-control"  aria-describedby="text" name="fullname" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control"  aria-describedby="emailHelp" name="email" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control"  name="password" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <p class="signin mt-3">Already have an acount ? <a href="/user/signin">Signin</a> </p>
+    </form>
+    </div>
+
+    <%- include('./partials/script') %>
+</body>
+</html>
